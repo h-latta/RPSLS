@@ -20,4 +20,11 @@ class Field:
         print('Rock crushes Scissors')
 
     def number_of_players(self):
-        print('How many players are there?')
+        print('How many players are there? (1 for Human vs AI, 2 for Human vs Human)')
+        player_count = input(int())
+        if player_count == 1:
+            human_one = Human()
+            ai_one = Ai()
+        elif player_count == 2:
+            human_one = Human()
+            human_two = Human()

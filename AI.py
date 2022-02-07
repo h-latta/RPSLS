@@ -1,10 +1,14 @@
 from player import Player
+import random
+
 
 class Ai(Player):
 
     def __init__(self):
-        self.ai_choice = 'Random'
+        self.name = 'Sheldon'
+        self.ai_choice = ''
         super().__init__()
+        self.gestures_list
 
-    def ai_random_choice():
-        pass
+    def ai_random_choice(self, human_choice):
+        random_choice = random.choice(self.gestures_list)
