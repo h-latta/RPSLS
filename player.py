@@ -6,8 +6,8 @@ class Player:
 
     def __init__(self):
         self.wins = 0
-        self.name = 'Jim'
-        self.chosen_gesture = "paper"
+        self.name = ''
+        self.chosen_gesture = ''
         self.gestures_list = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
 
     def choose_gesture():
