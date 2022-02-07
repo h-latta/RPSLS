@@ -6,6 +6,7 @@ class Field:
     def __init__(self):
         self.human_one = Human()
         self.ai_one = Ai()
+        self.human_two = Human()
 
         print('Welcome to Rock Paper Scissors Lizard Spock!')
         print()
@@ -25,13 +26,27 @@ class Field:
     def number_of_players(self):
         print('How many players are there? (1 for Human vs AI, 2 for Human vs Human)')
         player_count = int(input())
-        if player_count == 1:
-            self.human_one.human_player()
-            print(self.human_one.name)
-            
-        elif player_count == 2:
-            human_one = Human()
-            human_two = Human()
+        next_step = False
+        while next_step == False:
+            if player_count == 1:
+                next_step == True
+                print("You've selected Human vs AI.")
+                self.human_one.human_player()
+                self.ai_one.ai_player()
+                print(self.human_one.name)
+                print(self.ai_one.name)
+
+            elif player_count == 2:
+                next_step == True
+                print("You've selected Human vs Human.")
+                self.human_one.human_player()
+                self.human_two.human_player()
+                print(self.human_one.name)
+                print(self.human_two.name)
+        
+            elif player_count != 1 or 2:
+                print('Please select the appropriate option.')
+                break
 
     def ai_match(self):
         pass

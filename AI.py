@@ -5,10 +5,13 @@ import random
 class Ai(Player):
 
     def __init__(self):
-        self.name = 'Sheldon'
+        self.name = ''
         self.ai_choice = ''
         super().__init__()
         self.gestures_list
 
     def ai_random_choice(self, human_choice):
         random_choice = random.choice(self.gestures_list)
+
+    def ai_player(self):
+        self.name = 'Sheldon'
