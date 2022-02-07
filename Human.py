@@ -9,7 +9,8 @@ class Human(Player):
 
 
     def human_player(self):
-        self.name = 'Jim'
+        user_name = input(f'Please enter in player one name...')
+        self.name = user_name
 
     def human_choice(self):
         pass

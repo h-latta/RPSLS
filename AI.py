@@ -10,7 +10,7 @@ class Ai(Player):
         super().__init__()
         self.gestures_list
 
-    def ai_random_choice(self, human_choice):
+    def ai_turn(self, human_choice):
         random_choice = random.choice(self.gestures_list)
 
     def ai_player(self):

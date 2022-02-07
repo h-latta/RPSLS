@@ -24,32 +24,36 @@ class Field:
         print('Rock crushes Scissors')
 
     def number_of_players(self):
-        print('How many players are there? (1 for Human vs AI, 2 for Human vs Human)')
-        player_count = int(input())
+        print('How many players are there? (1 for Human vs AI, 2 for Human vs Human?)')
+        
         next_step = False
-        while next_step == False:
+        while next_step is False:
+
+            player_count = int(input())
+                        
             if player_count == 1:
-                next_step == True
-                print("You've selected Human vs AI.")
+                
                 self.human_one.human_player()
+                print(f'Player 1 is {self.human_one.name}!')
                 self.ai_one.ai_player()
-                print(self.human_one.name)
-                print(self.ai_one.name)
+                print(f'AI Player is {self.ai_one.name}!')
+                next_step == True
+
+                self.ai_turn(self)
 
             elif player_count == 2:
-                next_step == True
-                print("You've selected Human vs Human.")
+                  
                 self.human_one.human_player()
                 self.human_two.human_player()
                 print(self.human_one.name)
                 print(self.human_two.name)
-        
-            elif player_count != 1 or 2:
-                print('Please select the appropriate option.')
-                break
+                next_step == True
+                print("You've selected Human vs Human.")
 
-    def ai_match(self):
-        pass
+            elif player_count != 1 or 2:
+                    print('Please select the appropriate option.')
+                        
+     
     
     def human_match(self):
         pass
