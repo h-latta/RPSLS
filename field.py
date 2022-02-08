@@ -38,7 +38,7 @@ class Field:
                 
                 self.human_one.human_player()
                 print(f'Player 1 is {self.human_one.name}!')
-                self.ai_one.ai_player()
+                # self.ai_one.ai_player()
                 print(f'AI Player is {self.ai_one.name}!')
                 next_step = True
 
@@ -65,17 +65,6 @@ class Field:
     # def human_human_match(self):
     #     pass
     
-    def human_ai_match(self, player_choice):
-        self.random_choice = random.choice(self.gestures_list)
-        
-        playing_rock = 'Rock'
-
-        while player_choice == 'Rock':
-
-            playing_rock is True
-            
-            if player_choice == self.random_choice:
-                print('Round Draw')
-
-                if self.random_choice == 'Scissors' or 'Lizard':
-                    print('Rock Wins!')
+    def human_ai_match(self):
+        self.human_one.human_choice()
+        self.ai_one.ai_turn()
