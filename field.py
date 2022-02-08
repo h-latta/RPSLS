@@ -26,25 +26,18 @@ class Field:
     def number_of_players(self):
         print('How many players are there? (1 for Human vs AI, 2 for Human vs Human?)')
         
-        
         next_step = False
         while next_step is False:
-
-
             player_count = int(input(''))
-                        
             if player_count == 1:  
                 next_step is True
-                
                 self.human_one.human_player()
                 print(f'Player 1 is {self.human_one.name}!')
                 self.ai_one.ai_player()
                 print(f'AI Player is {self.ai_one.name}!')
                 next_step = True
                 self.human_ai_match()
-
             elif player_count == 2:
-                  
                 self.human_one.human_player()
                 self.human_two.human_player()
                 print(f'Player One is {self.human_one.name}.')
@@ -52,7 +45,6 @@ class Field:
                 next_step = True
                 print("You've selected Human vs Human.")
                 self.human_human_match()
-
             elif player_count != 1 or 2:
                     print('Please select the appropriate option.')
 
@@ -63,14 +55,39 @@ class Field:
     
     
     def human_human_match(self):
-        self.human_one.human_choice()
-        self.human_two.human_choice()
-        self.gestures(self.human_one, self.human_two)
+        win = False
+        while self.human_one.wins < 2 or self.human_two.wins < 2:
+            rounds =+ 1
+            self.human_one.human_choice()
+            self.human_two.human_choice()
+            self.gestures(self.human_one, self.human_two)
+            print(f'{self.human_one.name} has {self.human_one.wins} wins. {self.human_two.name} has {self.human_two.wins} wins. End of Round {rounds}.')
+            if self.human_one.wins == 2:
+                win = True
+                print(f'{self.human_one.name} won the game!')
+                break
+            elif self.human_two.wins == 2:
+                win = True
+                print(f'{self.human_two.name} won the game!')
+                break
     
     def human_ai_match(self):
-        self.human_one.human_choice()
-        self.ai_one.ai_turn()
-        self.gestures(self.human_one, self.ai_one)
+        rounds = 0
+        win = False
+        while self.human_one.wins < 2 or self.ai_one.wins < 2:
+            rounds = rounds =+ 1
+            self.human_one.human_choice()
+            self.ai_one.ai_turn()
+            self.gestures(self.human_one, self.ai_one)
+            print(f'{self.human_one.name} has {self.human_one.wins} wins. {self.ai_one.name} has {self.ai_one.wins} wins. End of Round {rounds}.')
+            if self.human_one.wins == 2:
+                win = True
+                print(f'{self.human_one.name} won the game!')
+                break
+            elif self.ai_one.wins == 2:
+                win = True
+                print(f'{self.ai_one.name} won the game!')
+                break
 
     def gestures(self, player_one, player_two):
         count = 0
@@ -79,20 +96,43 @@ class Field:
         #Scissors beats Lizard and Paper
         #Lizard beats Paper and Spock
         #Spock beats Scissors and Rock
-        if player_one.chosen_gesture == 'Rock':
+        if player_one.chosen_gesture == player_two.chosen_gesture:
+            print("It's a tie.")
+        elif player_one.chosen_gesture == 'Rock':
             if player_two.chosen_gesture == 'Scissors' or player_two.chosen_gesture == 'Lizard':
-                count += 1
+                print('Player One wins!')
+                player_one.wins += 1
+            else:
+                print('Player Two wins!')
+                player_two.wins += 1
         elif player_one.chosen_gesture == 'Paper':
             if player_two.chosen_gesture == 'Spock' or player_two.chosen_gesture == 'Rock':
-                count += 1
+                print('Player One wins!')
+                player_one.wins += 1
+            else:
+                print('Player Two wins!')
+                player_two.wins += 1
         elif player_one.chosen_gesture == 'Scissors':
             if player_two.chosen_gesture == 'Lizard' or player_two.chosen_gesture == 'Paper':
-                count += 1
+                print('Player One wins!')
+                player_one.wins += 1
+            else:
+                print('Player Two wins!')
+                player_two.wins += 1
         elif player_one.chosen_gesture == 'Lizard':
             if player_two.chosen_gesture == 'Paper' or player_two.chosen_gesture == 'Spock':
-                count += 1
+                print('Player One wins!')
+                player_one.wins += 1
+            else:
+                print('Player Two wins!')
+                player_two.wins += 1
         elif player_one.chosen_gesture == 'Spock':
             if player_two.chosen_gesture == 'Scissors' or player_two.chosen_gesture == 'Rock':
-                count += 1
+                print('Player One wins!')
+                player_one.wins += 1
+            else:
+                print('Player Two wins!')
+                player_two.wins += 1
         else:
-            print("It's a tie.")
+            print('Player Two wins!')
+            player_two.wins += 1
