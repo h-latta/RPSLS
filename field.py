@@ -65,8 +65,34 @@ class Field:
     def human_human_match(self):
         self.human_one.human_choice()
         self.human_two.human_choice()
+        self.gestures(self.human_one, self.human_two)
     
     def human_ai_match(self):
         self.human_one.human_choice()
-        player_choice = self.human_one.chosen_gesture
-        self.ai_one.ai_turn(player_choice)
+        self.ai_one.ai_turn()
+        self.gestures(self.human_one, self.ai_one)
+
+    def gestures(self, player_one, player_two):
+        count = 0
+        #Rock beats Scissors and Lizard
+        #Paper beats Spock and Rock
+        #Scissors beats Lizard and Paper
+        #Lizard beats Paper and Spock
+        #Spock beats Scissors and Rock
+        if player_one.chosen_gesture == 'Rock':
+            if player_two.chosen_gesture == 'Scissors' or player_two.chosen_gesture == 'Lizard':
+                count += 1
+        elif player_one.chosen_gesture == 'Paper':
+            if player_two.chosen_gesture == 'Spock' or player_two.chosen_gesture == 'Rock':
+                count += 1
+        elif player_one.chosen_gesture == 'Scissors':
+            if player_two.chosen_gesture == 'Lizard' or player_two.chosen_gesture == 'Paper':
+                count += 1
+        elif player_one.chosen_gesture == 'Lizard':
+            if player_two.chosen_gesture == 'Paper' or player_two.chosen_gesture == 'Spock':
+                count += 1
+        elif player_one.chosen_gesture == 'Spock':
+            if player_two.chosen_gesture == 'Scissors' or player_two.chosen_gesture == 'Rock':
+                count += 1
+        else:
+            print("It's a tie.")
