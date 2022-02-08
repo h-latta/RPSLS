@@ -38,20 +38,20 @@ class Field:
                 
                 self.human_one.human_player()
                 print(f'Player 1 is {self.human_one.name}!')
-                # self.ai_one.ai_player()
+                self.ai_one.ai_player()
                 print(f'AI Player is {self.ai_one.name}!')
                 next_step = True
-
-                # self.ai_one.ai_turn(self)
+                self.human_ai_match()
 
             elif player_count == 2:
                   
                 self.human_one.human_player()
                 self.human_two.human_player()
-                print(self.human_one.name)
-                print(self.human_two.name)
+                print(f'Player One is {self.human_one.name}.')
+                print(f'Player Two is {self.human_two.name}.')
                 next_step = True
                 print("You've selected Human vs Human.")
+                self.human_human_match()
 
             elif player_count != 1 or 2:
                     print('Please select the appropriate option.')
@@ -62,9 +62,11 @@ class Field:
                         
     
     
-    # def human_human_match(self):
-    #     pass
+    def human_human_match(self):
+        self.human_one.human_choice()
+        self.human_two.human_choice()
     
     def human_ai_match(self):
         self.human_one.human_choice()
-        self.ai_one.ai_turn()
+        player_choice = self.human_one.chosen_gesture
+        self.ai_one.ai_turn(player_choice)

@@ -7,16 +7,17 @@ class Ai(Player):
     def __init__(self):
         self.wins = 0
         self.name = 'Sheldon'
-        self.ai_choice = ''
+        self.chosen_gesture = ''
         super().__init__()
         self.gestures_list
 
 
-    # def ai_player(self):
-    #     self.name = 'Sheldon'
+    def ai_player(self):
+         self.name = 'Sheldon'
 
     def ai_turn(self, player_choice):
         self.random_choice = random.choice(self.gestures_list)
+        self.chosen_gesture = self.random_choice
         
         playing_rock = 'Rock'
 
