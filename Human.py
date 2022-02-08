@@ -2,11 +2,11 @@ from player import Player
 
 class Human(Player):
     def __init__(self):
-        self.wins = 0
-        self.name = 'Jim'
-        self.chosen_gesture = ''
+        # self.wins = 0
+        # self.name = 'Jim'
+        # self.chosen_gesture = ''
         super().__init__()
-        self.gestures_list
+        # self.gestures_list
 
 
     def human_player(self):

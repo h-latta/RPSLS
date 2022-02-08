@@ -8,6 +8,7 @@ class Player:
         self.wins = 0
         self.name = ''
         self.chosen_gesture = ''
+        self.rounds = 0
         self.gestures_list = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
 
     def choose_gesture():
