@@ -9,6 +9,8 @@ class Field:
         self.ai_one = Ai()
         self.human_two = Human()
         self.rounds = 0
+
+    def number_of_players(self):
         print()
         print('*******Welcome to Rock-Paper-Scissors-Lizard-Spock!*******')
         print()
@@ -27,61 +29,50 @@ class Field:
         print('Spock vaporizes Rock')
         print('Rock crushes Scissors')
         print()
-
-    def number_of_players(self):
         print('How many players are there? (1 for Human vs AI, 2 for Human vs Human?)')
         
         next_step = False
-
         while next_step is False:
-
             player_count = int(input(''))
 
             if player_count == 1:  
+                print("You've selected Human vs AI.")
                 next_step is True
                 self.human_one.human_player()
+                print()
                 print(f'Player 1 is {self.human_one.name}!')
                 self.ai_one.ai_player()
-                print()
                 print(f'AI Player is {self.ai_one.name}!')
+                print()
                 next_step = True
                 self.human_ai_match()
                 
             elif player_count == 2:
+                print("You've selected Human vs Human.")
                 self.human_one.human_player()
                 self.human_two.human_player()
+                print()
                 print(f'Player One is {self.human_one.name}.')
                 print(f'Player Two is {self.human_two.name}.')
+                print()
                 next_step = True
-                print("You've selected Human vs Human.")
                 self.human_human_match()
             
             elif player_count != 1 or 2:
                     print('Please select the appropriate option.')
-
-            # else:
-            #     print('Lets Duel!')
-            #     self.ai_one.ai_turn(self) 
-                        
-    
     
     def human_human_match(self):
         win = False
-        # rounds = 0
-        
-
         while self.human_one.wins < 2 or self.human_two.wins < 2:
-
-            # played_round = rounds =+ 1
             self.human_one.human_choice()
-            print(f'Pleyer One chose {self.human_one.chosen_gesture}')
             self.human_two.human_choice()
             print()
-
-            print(f'Pleyer Two chose {self.human_two.chosen_gesture}')
+            print(f'{self.human_one.name} chose {self.human_one.chosen_gesture}')
+            print(f'{self.human_two.name} chose {self.human_two.chosen_gesture}')
+            print()
             self.gestures(self.human_one, self.human_two)
-            print(f'{self.human_one.name} has won {self.human_one.wins}. {self.human_two.name} has won {self.human_two.wins}. End of Round.')
-           
+            print(f'{self.human_one.name} has won {self.human_one.wins}. {self.human_two.name} has won {self.human_two.wins}. End of Round {self.rounds}.')
+            print()
             if self.human_one.wins == 2:
                 win = True
                 print(f'{self.human_one.name} won the game!')
@@ -97,19 +88,16 @@ class Field:
         rounds = self.ai_one.rounds
         win = False
         while self.human_one.wins < 2 or self.ai_one.wins < 2:
-            
-    
-            
             self.human_one.human_choice()
-            print(f'Pleyer One chose {self.human_one.chosen_gesture}')
             self.ai_one.ai_turn()
-            
+            print()
+            print(f'{self.human_one.name} chose {self.human_one.chosen_gesture}')
+            print(f'{self.ai_one.name} chose {self.ai_one.chosen_gesture}')
+            print()
             self.gestures(self.human_one, self.ai_one)
-            print(f'Pleyer One chose {self.ai_one.chosen_gesture}')
             self.rounds += 1
-
             print(f'{self.human_one.name} has {self.human_one.wins} wins. {self.ai_one.name} has {self.ai_one.wins} wins. End of Round {self.rounds}.')
-            
+            print()
             if self.human_one.wins == 2:
                 win = True
                 print(f'{self.human_one.name} won the game!')
