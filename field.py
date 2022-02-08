@@ -26,20 +26,23 @@ class Field:
     def number_of_players(self):
         print('How many players are there? (1 for Human vs AI, 2 for Human vs Human?)')
         
+        
         next_step = False
         while next_step is False:
 
-            player_count = int(input())
+
+            player_count = int(input(''))
                         
-            if player_count == 1:
+            if player_count == 1:  
+                next_step is True
                 
                 self.human_one.human_player()
                 print(f'Player 1 is {self.human_one.name}!')
                 self.ai_one.ai_player()
                 print(f'AI Player is {self.ai_one.name}!')
-                next_step == True
+                next_step = True
 
-                self.ai_turn(self)
+                # self.ai_one.ai_turn(self)
 
             elif player_count == 2:
                   
@@ -47,13 +50,32 @@ class Field:
                 self.human_two.human_player()
                 print(self.human_one.name)
                 print(self.human_two.name)
-                next_step == True
+                next_step = True
                 print("You've selected Human vs Human.")
 
             elif player_count != 1 or 2:
                     print('Please select the appropriate option.')
+
+            # else:
+            #     print('Lets Duel!')
+            #     self.ai_one.ai_turn(self) 
                         
-     
     
-    def human_match(self):
-        pass
+    
+    # def human_human_match(self):
+    #     pass
+    
+    def human_ai_match(self, player_choice):
+        self.random_choice = random.choice(self.gestures_list)
+        
+        playing_rock = 'Rock'
+
+        while player_choice == 'Rock':
+
+            playing_rock is True
+            
+            if player_choice == self.random_choice:
+                print('Round Draw')
+
+                if self.random_choice == 'Scissors' or 'Lizard':
+                    print('Rock Wins!')
