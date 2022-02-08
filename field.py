@@ -10,11 +10,12 @@ class Field:
         self.human_two = Human()
         self.rounds = 0
         print()
-        print('*******Welcome to Rock Paper Scissors Lizard Spock!*******')
+        print('*******Welcome to Rock-Paper-Scissors-Lizard-Spock!*******')
         print()
         print('Each match will be Best of 3!')       
         print()
-        print('Here is a set rules')
+        print('Here is a set rules:')
+        print()
         print('Scissors cuts Paper')
         print('Paper covers Rock')
         print('Rock crushes Lizard')
@@ -25,6 +26,7 @@ class Field:
         print('Paper disproves Spock')
         print('Spock vaporizes Rock')
         print('Rock crushes Scissors')
+        print()
 
     def number_of_players(self):
         print('How many players are there? (1 for Human vs AI, 2 for Human vs Human?)')
@@ -40,6 +42,7 @@ class Field:
                 self.human_one.human_player()
                 print(f'Player 1 is {self.human_one.name}!')
                 self.ai_one.ai_player()
+                print()
                 print(f'AI Player is {self.ai_one.name}!')
                 next_step = True
                 self.human_ai_match()
@@ -71,9 +74,13 @@ class Field:
 
             # played_round = rounds =+ 1
             self.human_one.human_choice()
+            print(f'Pleyer One chose {self.human_one.chosen_gesture}')
             self.human_two.human_choice()
+            print()
+
+            print(f'Pleyer Two chose {self.human_two.chosen_gesture}')
             self.gestures(self.human_one, self.human_two)
-            print(f'{self.human_one.name} has {self.human_one.wins} wins. {self.human_two.name} has {self.human_two.wins} wins. End of Round.')
+            print(f'{self.human_one.name} has won {self.human_one.wins}. {self.human_two.name} has won {self.human_two.wins}. End of Round.')
            
             if self.human_one.wins == 2:
                 win = True
@@ -94,11 +101,11 @@ class Field:
     
             
             self.human_one.human_choice()
-            
+            print(f'Pleyer One chose {self.human_one.chosen_gesture}')
             self.ai_one.ai_turn()
             
             self.gestures(self.human_one, self.ai_one)
-            
+            print(f'Pleyer One chose {self.ai_one.chosen_gesture}')
             self.rounds += 1
 
             print(f'{self.human_one.name} has {self.human_one.wins} wins. {self.ai_one.name} has {self.ai_one.wins} wins. End of Round {self.rounds}.')

@@ -21,3 +21,5 @@ class Human(Player):
         print('Enter 4 for Spock')
         chosen_gesture = input('Enter your chosen number. ')
         self.chosen_gesture = self.gestures_list[(int(chosen_gesture))]
+
+ 
